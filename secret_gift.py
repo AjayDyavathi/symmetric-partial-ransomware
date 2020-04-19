@@ -3,8 +3,16 @@ try:
     from Crypto.Cipher import AES
     from Crypto.Hash import SHA256
 except:
-    os.system('python3 -m pip install Crypto')
+    try:
+        os.system('python3 -m pip install pycryptodome')
+        os.system('python -m pip install pycryptodome')
+    except:
+        print('Please install module named "pycryptodome"')
+        import sys
+        sys.exit()
 
+from Crypto.Cipher import AES
+from Crypto.Hash import SHA256
 
 def hash_key(key):
     return SHA256.new(key.encode()).digest()
